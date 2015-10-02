@@ -29,11 +29,11 @@
                         end--;
 
                     // only duplicated if both start and end are equal with their neighbor
-                    while (nums[start]!= i+1 && nums[start] == nums[start - 1])
+                    while (nums[start]!= i+1 && start < end && nums[start] == nums[start - 1])
                     {
                         start++;
                     }
-                    while (nums[end] == nums[end - 1])
+                    while (start < end && nums[end] == nums[end - 1])
                     {
                         end--;
                     }
