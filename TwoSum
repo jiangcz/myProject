@@ -1,0 +1,20 @@
+public static int[] twoSum(int[] nums, int target)
+{
+  Dictionary<int, int> myDic = new Dictionary<int,int>();
+  int[] result = new int[2];
+  for (int i=0; i< nums.Length; i++)
+  {
+    if (myDic.ContainsKey(nums[i]))
+    {
+      int index = myDic[nums[i]];
+      result[0] = index + 1;
+      result[1] = i + 1;
+      break;
+    }
+    else
+    {
+      myDic.Add(target - nums[i], i);
+    }
+  }
+  return result;
+}
