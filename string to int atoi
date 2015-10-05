@@ -1,0 +1,56 @@
+/*Implement atoi (ascii to integer) to convert a string to an integer.
+
+Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.
+     The following cases should be considered for this problem:
+
+1. null or empty string
+2. white spaces
+3. +/- sign
+4. calculate real value
+5. handle min & max
+*/
+
+        static int atoi(string s)
+        {
+            if (string.IsNullOrEmpty(s))
+            {
+                return 0;
+            }
+            s = s.Trim();
+
+            int result = 0;
+            int flag = 1;
+            int i = 0;
+            //check positive or negative
+            switch (s[i])
+            {
+                case '-':
+                    flag = -1;
+                    i++;
+                    break;
+                case '+':
+                    flag = 1;
+                    i++;
+                    break;
+            }
+            
+            //check the rest of numbers
+            while (i < s.Length && s[i] >= '0' && s[i] <= '9')
+            {
+                try
+                {
+                //calculate the value
+                    result = 10 * result + (s[i] - '0');
+                    i++;
+                }
+                //cathc the overflow
+                catch (OverflowException)
+                {
+                    return flag == 1 ? int.MaxValue : int.MinValue;
+                }
+
+            }
+
+            return result = flag * result;
+
+        }
